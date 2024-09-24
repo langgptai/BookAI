@@ -14,8 +14,11 @@ pip install -r requirements.txt
 ```
 
 ## 运行项目
+
+前往[硅基流动](https://cloud.siliconflow.cn/i/TxUlXG3u)注册免费的 API，获取 API_KEY
+> https://cloud.siliconflow.cn/i/TxUlXG3u
 ```
-export API_KEY=sk-wmnbdnrgzevspzhskctabvfenwcwggythtdonerakqchario
+export API_KEY=sk-xxx
 export BASE_URL=https://api.siliconflow.cn/v1
 export MODEL_NAME=internlm/internlm2_5-7b-chat
 
