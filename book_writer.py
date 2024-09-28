@@ -1,4 +1,5 @@
 import os
+import re
 import json
 from typing import List, Dict, Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor
@@ -64,6 +65,12 @@ class PuyuAPIClient:
         except openai.OpenAIError as e:
             print(f"API调用失败: {e}")
             raise
+
+def convert_latex_to_markdown(text):
+    # 使用正则表达式替换公式开始和结束的 \[ 和 \]，但不替换公式内部的
+    pattern = r'(?<!\\)\\\[((?:\\.|[^\\\]])*?)(?<!\\)\\\]'
+    return re.sub(pattern, r'$$\1$$', text)
+
 
 class BookWriter:
     """管理书籍生成过程的主类。"""
@@ -191,6 +198,7 @@ class BookWriter:
                 return response
             except Exception as e:
                 print(f"Attempt {attempt + 1} failed: {e}")
+        response = convert_latex_to_markdown(response)
         return response
 
     def generate_book(self, custom_theme=None, save_file=False) -> None:
@@ -215,6 +223,7 @@ class BookWriter:
         book_content = "# " + title
 
         # 使用线程池来并行生成章节内容
+        print("\n开始创作正文内容，时间较长（约几分钟）请等待~")
         with ThreadPoolExecutor() as executor:
             chapter_contents = list(executor.map(self.generate_chapter, [book_intro]*len(chapters), chapters))
 
