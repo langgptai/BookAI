@@ -24,7 +24,7 @@ git clone https://github.com/langgptai/BookAI.git
 cd BookAI
 ```
 
-3. 运行下面的指令
+3. 使用从硅基流动获取的 API_KEY 配置下面的指令并执行
 ```
 export API_KEY=sk-xxx
 export BASE_URL=https://api.siliconflow.cn/v1
