@@ -2,7 +2,7 @@
 
 AI 一键出书 -by 云中江树
 
-书生浦语大模型训练营，提示工程实践开源项目。
+[书生浦语大模型训练营](https://github.com/InternLM/Tutorial)，提示工程实践开源项目。
 
 在线体验链接：
 https://book.apps.langgpt.ai/
